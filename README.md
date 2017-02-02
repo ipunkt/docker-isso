@@ -8,3 +8,5 @@ isso with environment based configuration
 | LISTEN | http://0.0.0.0:8080/ | Address and port where isso should listen for connections | listen |
 | DB | /db/comments.db | Path where the sqlite database should be located | db\_path |
 
+# Thanks
+This is based on https://github.com/Wonderfall/dockerfiles/tree/master/isso

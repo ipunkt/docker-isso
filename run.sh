@@ -38,6 +38,7 @@ sed -e "s~%%URL%%~$URL~" \
 if [ "$#" -gt "0" ] ; then
 	$*
 else
-	exec /usr/local/bin/run.sh
+	chown -R $UID:$GID /db /config
+	exec su-exec $UID:$GID /sbin/tini -- isso -c /config/isso.conf run<t_ü>	
 fi
 

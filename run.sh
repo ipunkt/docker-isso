@@ -35,10 +35,14 @@ sed -e "s~%%URL%%~$URL~" \
 	-e "s~%%DB%%~$DB~" \
 	/opt/config/isso.conf.tpl > /config/isso.conf
 
+export ISSO_SETTINGS="/config/isso.conf"
 if [ "$#" -gt "0" ] ; then
 	$*
 else
 	chown -R $UID:$GID /db /config
-	exec su-exec $UID:$GID /sbin/tini -- isso -c /config/isso.conf run<t_ü>	
+
+	exec su-exec $UID:$GID gunicorn -b localhost:8080 -w 4 --preload isso.run
+	#isso -c /config/isso.conf run
+
 fi
 

@@ -33,4 +33,4 @@ CMD ["run.sh"]
 
 COPY isso.conf.tpl /opt/config/isso.conf.tpl
 COPY run.sh /run.sh
-ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["/sbin/tini", "sh", "/run.sh"]

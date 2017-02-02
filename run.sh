@@ -41,7 +41,7 @@ if [ "$#" -gt "0" ] ; then
 else
 	chown -R $UID:$GID /db /config
 
-	exec su-exec $UID:$GID gunicorn -b localhost:8080 -w 4 --preload isso.run
+	exec su-exec $UID:$GID gunicorn -b 0.0.0.0:8080 -w 4 --preload isso.run
 	#isso -c /config/isso.conf run
 
 fi
